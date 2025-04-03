@@ -1,0 +1,171 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'public/styles/foundation/common';
+@use 'public/styles/page/lib/base';
+@use 'public/styles/page/lib/form';
+
+/* ----------------------- STYLES ----------------------------- */
+
+.page-header {
+	@extend %page-header;
+}
+
+.page-container {
+	margin-bottom: 125px;
+}
+
+.gallery-pictures {
+	margin: {
+		bottom: 125px;
+	}
+
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.gallery-footer {
+	border-top: {
+		width: 3px;
+		style: solid;
+		color: common.$colors-black;
+	}
+
+	display: flex;
+	align-items: center;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100px;
+	z-index: 100;
+	background-color: common.$colors-white;
+}
+
+.upload-new-pictures-button {
+	@include form.small-button($bgColor: common.$colors-steel-blue, $width: 250px);
+
+	margin: {
+		left: auto;
+		right: auto;
+	}
+
+	white-space: nowrap;
+}
+
+.upload-gallery-file-input {
+	display: none;
+}
+
+.image-card {
+	border: {
+		width: 0.75px;
+		style: solid;
+		color: common.$colors-slate-gray;
+		radius: 10px;
+	}
+
+	margin: 10px;
+	padding: 3px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.image-container {
+	margin: {
+		top: 15px;
+		bottom: 15px;
+		left: 20px;
+		right: 20px;
+	}
+
+	border: {
+		style: solid;
+		width: 1.5px;
+		color: common.$colors-black;
+	}
+
+	width: 300px;
+	height: 300px;
+	position: relative;
+
+	& > img {
+		object-fit: contain;
+		cursor: pointer;
+	}
+}
+
+.image-data-form {
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.image-data-row {
+	margin: {
+		top: 10px;
+		bottom: 10px;
+	}
+
+	display: grid;
+	grid-template-columns: [first] 1fr [second] 3fr;
+	justify-content: flex-start;
+	align-items: center;
+	width: 100%;
+}
+
+.image-data-label {
+	@extend %secondary-label;
+
+	margin-right: 5px;
+}
+
+.image-data-field {
+	@extend %input-control;
+
+	width: 275px;
+}
+
+.photo-delete-icon {
+	border-radius: 50%;
+	position: absolute;
+	top: -12px;
+	left: calc(100% - 12px);
+	cursor: pointer;
+	z-index: 100;
+	color: common.$colors-indian-red;
+	background-color: common.$colors-white;
+	width: 24px;
+	height: 24px;
+}
+
+.photo-index {
+	@include common.fonts-define-font($size: common.$fonts-subsection, $family: var(--font-roboto-mono));
+
+	border: {
+		radius: 50%;
+		color: common.$colors-black;
+		style: solid;
+	}
+
+	padding: {
+		top: 3px;
+		bottom: 3px;
+		left: 18px;
+		right: 18px;
+	}
+
+	position: absolute;
+	top: 5%;
+	left: 5%;
+	z-index: 100;
+	color: common.$colors-black;
+	background-color: common.$colors-white;
+}
+
+.public-gallery-footer-offset {
+	@extend %footer-offset;
+}

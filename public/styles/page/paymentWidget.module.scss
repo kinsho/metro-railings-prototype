@@ -1,0 +1,295 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'public/styles/foundation/common';
+@use 'public/styles/page/lib/form';
+
+/* ----------------------- STYLES ----------------------------- */
+
+.payment-accordion {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	max-width: 500px;
+	width: 90%;
+}
+
+.balance-remaining-tab {
+	@include common.fonts-define-font($family: var(--font-poppins), $size: common.$fonts-secondary);
+
+	border: {
+		width: 0.25px;
+		style: solid;
+		color: common.$colors-silver;
+		top-left-radius: 10px;
+		top-right-radius: 10px;
+	}
+
+	padding: {
+		top: 5px;
+		bottom: 5px;
+		left: 15px;
+		right: 15px;
+	}
+
+	text-align: center;
+	background-color: common.$colors-faint-silver;
+}
+
+.payment-amount-label {
+	@extend %label;
+
+	margin: {
+		left: 5px;
+		right: 5px;
+	}
+
+	align-self: center;
+}
+
+.payment-amount-field {
+	@extend %medium-input-control;
+
+	margin: {
+		left: 5px;
+		right: 5px;
+	}
+}
+
+.payment-amount-section {
+	@include common.fonts-define-font($family: var(--font-poppins));
+
+	border: {
+		width: 1px;
+		color: common.$colors-slate-gray;
+		style: solid;
+
+		top-left-radius: 10px;
+		top-right-radius: 10px;
+	}
+
+	padding: {
+		top: 8px;
+		bottom: 8px;
+	}
+
+	background-color: common.$colors-gray;
+	text-align: center;
+	width: 100%;
+}
+
+.payment-amount-value-section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.payment-accordion-section {
+	@include common.fonts-define-font($family: var(--font-poppins));
+
+	width: 100%;
+}
+
+.payment-accordion-section-header {
+	border: {
+		style: solid;
+		width: 1px;
+		color: common.$colors-gray;
+	}
+
+	padding: {
+		top: 8px;
+		bottom: 8px;
+		left: 5px;
+		right: 5px;
+	}
+
+	background-color: common.$colors-faint-silver;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+}
+
+.payment-accordion-section-header-text {
+	flex: 99;
+}
+
+.payment-accordion-section-header-icon {
+	margin-right: 5px;
+	flex: 1;
+}
+
+.payment-accordion-section-body {
+	@include common.animations-transition-settings($property: height, $duration: 0.4s);
+
+	padding: 0;
+	height: 0;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	background-color: common.$colors-white;
+}
+
+.payment-regular-row {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	box-sizing: border-box;
+
+	&-center {
+		@extend .payment-regular-row;
+
+		padding: 10px;
+		justify-content: center;
+	}
+
+	&-flex-end {
+		@extend .payment-regular-row;
+
+		padding: 10px;
+		justify-content: flex-end;
+	}
+
+	&-rule {
+		@extend .payment-regular-row;
+
+		border-top: {
+			width: 3px;
+			color: common.$colors-silver;
+			style: double;
+		}
+
+		margin: 0;
+	}
+
+	&-disabled {
+		opacity: 0.5;
+	}
+}
+
+.payment-cc-existing-card {
+	@include common.fonts-define-font($family: var(--font-poppins), $size: common.$fonts-secondary);
+
+	margin: {
+		left: 10px;
+		right: 10px;
+	}
+}
+
+.payment-cc-existing-card-logo {
+	margin: {
+		right: 2px;
+	}
+}
+
+.payment-cc-number-input {
+	@extend %large-input-control;
+
+	border: {
+		width: 0.5px;
+		
+		top: none;
+		left: none;
+		right: none;
+	}
+}
+
+.payment-cc-icons {
+	position: relative;
+	display: inline-block;
+	width: 138px;
+	height: 32px;
+
+	img {
+		@include common.animations-transition-settings($property: all, $duration: 0.2s);
+
+		position: absolute;
+
+		&:nth-child(1) {
+			left: 5px;
+		}
+
+		&:nth-child(2) {
+			left: 29px;
+		}
+
+		&:nth-child(3) {
+			left: 53px;
+		}
+
+		&:nth-child(4) {
+			left: 77px;
+		}
+	}
+}
+
+.hide-card-brand {
+	width: 0;
+}
+
+.emphasize-card-brand {
+	left: 5px !important;
+}
+
+.payment-small-input {
+	@extend %input-control;
+
+	border: {
+		width: 0.5px;
+		color: common.$colors-slate-gray;
+		style: solid;
+	}
+
+	width: 64px;
+}
+
+.payment-image-container {
+	padding: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.upload-image-button {
+	@include form.small-button($width: 150px, $bgColor: common.$colors-steel-blue);
+
+	font-size: common.$fonts-secondary;
+}
+
+.upload-file-input {
+	margin: 0;
+	padding: 0;
+	opacity: 0;
+	width: 1px;
+}
+
+.submit-row {
+	border: {
+		width: 1px;
+		color: common.$colors-slate-gray;
+		style: solid;
+
+		bottom-left-radius: 10px;
+		bottom-right-radius: 10px;
+	}
+
+	padding: {
+		top: 8px;
+		bottom: 8px;
+	}
+
+	background-color: common.$colors-silver;
+	text-align: center;
+	width: 100%;
+}
+
+.submit-button {
+	@include form.small-button($width: 250px, $bgColor: common.$colors-sea-green);
+
+	margin: {
+		top: 8px;
+		bottom: 8px;
+		left: auto;
+		right: auto;
+	}
+}

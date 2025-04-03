@@ -1,0 +1,136 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'public/styles/foundation/common';
+@use 'public/styles/page/lib/base';
+
+/* ----------------------- STYLES ----------------------------- */
+
+#page-container {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+}
+
+.page-header {
+	@extend %page-header;
+}
+
+.page-divider {
+	@extend %page-divider;
+}
+
+.dashboard-bubbles-container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
+.dashboard-bubble {
+	@include common.fonts-define-font();
+
+	border: {
+		width: 0.5px;
+		color: common.$colors-gray;
+		style: solid;
+
+		top-left-radius: 10px;
+		top-right-radius: 10px;
+	}
+
+	margin: {
+		top: 20px;
+		bottom: 20px;
+		left: 1.75%;
+		right: 1.75%;
+	}
+
+	width: 20%;
+	position: relative;
+	box-shadow: 1px 1px 7px common.$colors-low-black;
+	text-align: center;
+	background-color: common.$colors-white;
+	cursor: pointer;
+}
+
+.dashboard-bubble-body {
+	min-height: 50px;
+}
+
+.dashboard-bubble-customer-name {
+	@include common.fonts-define-font($family: var(--font-avenir-heavy)) {
+		color: black;
+	};
+
+	padding: 10px;
+	background-color: common.$colors-faint-silver;
+}
+
+.dashboard-bubble-company-text {
+	font-style: italic;
+}
+
+.dashboard-bubble-info {
+	border-top: {
+		width: 0.5px;
+		style: solid;
+	}
+
+	& > div {
+		margin: {
+			top: 5px;
+		}
+	}
+}
+
+.dashboard-bubble-task {
+	@include common.fonts-define-font($size: common.$fonts-secondary) {
+		color: white;
+	};
+
+	padding: 5px;
+	background-color: common.$colors-pale-violet-red;
+}
+
+.dashboard-bubble-navigator {
+	border: {
+		radius: 50%;
+		width: 2px;
+		style: solid;
+	}
+
+	padding: 8px;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	background-color: common.$colors-steel-blue;
+	color: common.$colors-white;
+	width: 35px;
+	top: 5px;
+	left: 95%;
+	cursor: pointer;
+}
+
+.dashboard-bubble-due-date {
+	@include common.fonts-define-font($size: common.$fonts-secondary);
+
+	border: {
+		radius: 50%;
+		width: 2px;
+		style: solid;
+		color: common.$colors-black;
+	}
+
+	padding: 12px;
+	transform:translate(-50%, -50%);
+	width: 35px;
+	background-color: common.$colors-white;
+	color: common.$colors-black;
+	position: absolute;
+	top: 0;
+	left: 95%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}

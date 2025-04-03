@@ -1,0 +1,69 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'sass:color';
+
+/* ----------------------- PUBLIC CONSTANTS ----------------------------- */
+
+$indian-red: #CD5C5C;
+$pale-violet-red: #DB7093;
+$negative-red: #DB5192;
+$light-coral: #F08080;
+$light-salmon: #FFA07A;
+
+$amber: #A8B633;
+$light-yellow: #EEF3C2;
+$gold: #FFD700;
+
+$success: #21693A;
+$sea-green: #3CB371;
+
+$lavender: #E6E6FA;
+$cadet-blue: #5F9EA0;
+$steel-blue: #4682B4;
+$logo-blue: #174C5B;
+
+$faint-silver: #EDEAE9;
+$silver: #C0C0C0;
+$gray: #CDCDCD;
+$slate-gray: #708090;
+
+$smoke-white: #EEEFF1;
+$white: #FFF;
+
+$moccasin: #FFFFE0;
+
+$black: #000;
+$low-black: #333;
+
+/* ----------------------- MIX-INS ----------------------------- */
+
+/*
+ * Mix-in designed to render a gradient background on a particular element
+ * Works across all major browsers
+ *
+ * @param $initialColor - the color which will launch the gradient
+ * @param $endColor - the color which will mark the tail of the rendered gradient
+ * @param $direction - the direction in which the gradient will render across the background of the element
+ *
+ * @author kinsho
+ */
+@mixin set-gradient($initialColor, $endColor, $direction: left) {
+	/* stylelint-disable */
+	background: linear-gradient($direction, $initialColor, $endColor);
+	/* stylelint-enable */
+}
+
+/*
+ * Mix-in designed to lighten or darken a color from our defined colors
+ *
+ * @author kinsho
+ */
+@mixin adjust-color($selectedColor, $lighten: false, $darken: false) {
+	@if $lighten {
+		color: color.scale($selectedColor, $lightness: 20%);
+	} @else if $darken {
+		color: color.scale($selectedColor, $lightness: -20%);
+	} @else {
+		color: $selectedColor;
+	}
+}

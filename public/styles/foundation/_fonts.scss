@@ -1,0 +1,54 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'sass:math';
+@use 'public/styles/foundation/colors';
+@use 'public/styles/foundation/responsive';
+
+/*
+ * The custom font-families that the site will use are:
+ *
+ * Comfortaa (for special text)
+ * Poppins (for inputs)
+ * Raleway (for link text and charting)
+ * Roboto Mono (for data)
+ * Avenir 85 Heavy (for general text)
+ * Avenir 35 Light (for general text)
+ */
+
+/* ----------------------- PUBLIC CONSTANTS ----------------------------- */
+
+$header: 48px;
+$subheader: 36px;
+$section: 26px;
+$subsection: 20px;
+$default: 16px;
+$secondary: 14px;
+$special: 12px;
+
+/* ----------------------- MIX-INS ----------------------------- */
+
+/*
+ * Mixin built to provide a convenient way to set basic font styles quickly
+ *
+ * @param $weight - the font weight
+ * @param $size - the font size, as laid out in our font map
+ * @param $family - the font family
+ * @param $style - the font style
+ * @param $color - an optional parameter that allows one to specify a font color
+ *
+ * @author kinsho
+ */
+@mixin define-font($weight: 400, $size: $default, $family: var(--font-avenir-light)) {
+	font: {
+		weight: $weight;
+		size: $size;
+		family: $family, sans-serif;
+	}
+
+	// For phones, make the font smaller. The general rule of thumb is to subtract more pixels as the font size increases.
+	@include responsive.phone-only() {
+		font-size: math.div($size, 2) + 6px;
+	}
+
+	@content;
+}

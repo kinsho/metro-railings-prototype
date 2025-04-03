@@ -1,0 +1,74 @@
+/* ----------------------- MIX-INS ----------------------------- */
+
+/*
+ * Functional mix-in responsible for setting transitions on elements
+ *
+ * @param $property - the property or properties upon which to set transitions upon
+ * @param [$duration] - the number of seconds the animation is expected to last
+ * @param [$timing] - the pace at which the transition will animate
+ * @param [$delay] - the number of seconds to wait before initiating the animation
+ *
+ * @author kinsho
+ */
+@mixin transition-settings($property, $timing: ease, $duration: 2s, $delay: 0s) {
+	transition-property: $property;
+	transition-timing-function: $timing;
+	transition-duration: $duration;
+	transition-delay: $delay;
+}
+
+/*
+ * Functional mix-in responsible for setting all animation-related settings across all the major browsers
+ *
+ * @param [$keyframeSet] - the name of the set of keyframes towards which to apply these settings
+ * @param [$duration] - the duration of the animation
+ * @param [$timing] - the pace at which the animation will progress
+ * @param [$delay] - the amount of time to wait before the animation begins
+ * @param [$iterations] - the number of times which to execute the animation
+ * @param [$direction] - the direction in which the animation should play over time
+ * @param [$persist] - a flag indicating whether the end state of the animation should persist after the animation ends
+ *
+ * @author kinsho
+ */
+@mixin animation-settings($keyframeSet: false, $duration: false, $timing: false, $delay: false, $iterations: 1, $direction: normal, $persist: false) {
+	@if $keyframeSet {
+		animation-name: $keyframeSet;
+	}
+
+	@if $duration {
+		animation-duration: $duration;
+	}
+
+	@if $timing {
+		animation-timing-function: $timing;
+	}
+
+	@if $delay {
+		animation-delay: $delay;
+	}
+
+	@if $direction {
+		animation-direction: $direction;
+	}
+
+	@if $persist {
+		animation-fill-mode: forwards;
+	}
+
+	animation-iteration-count: $iterations;
+}
+
+/*
+ * Mix-in responsible for setting up keyframes across all the major browsers
+ * NOTE: The content to populate the body of the keyframes are provided through the use of the
+ * 		@content directive. Any invocation of this mix-in must have external content attached.
+ *
+ * @param $name - the name to assign to the keyframes being generated
+ *
+ * @author kinsho
+ */
+@mixin keyframes($name) {
+	@keyframes #{$name} {
+		@content;
+	}
+}

@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "next/core-web-vitals"
+  ],
+  "env": {
+    "es6" : true
+  },
+  "rules": {
+    "require-await" : "error",
+    "@next/next/no-html-link-for-pages": "off"
+  }
+}

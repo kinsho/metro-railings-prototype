@@ -1,0 +1,336 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'public/styles/foundation/common';
+@use 'public/styles/page/lib/base';
+@use 'public/styles/page/lib/form';
+
+/* ----------------------- PLACEHOLDERS ----------------------------- */
+
+%order-box-section-delineator {
+	border-bottom: {
+		width: 3px;
+		style: double;
+		color: common.$colors-slate-gray;
+	}
+}
+
+%column-header {
+	@include common.fonts-define-font($size: common.$fonts-section, $family: var(--font-comfortaa));
+}
+
+%order-box-section-header {
+	@include common.fonts-define-font($family: var(--font-avenir-heavy));
+
+	padding: {
+		top: 10px;
+		bottom: 10px;
+	}
+	border-bottom: {
+		width: 1px;
+		style: solid;
+		color: common.$colors-slate-gray;
+	}
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: common.$colors-lavender;
+	height: 45px;
+	box-sizing: border-box;
+}
+
+/* ----------------------- STYLES ----------------------------- */
+
+.page-container {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+}
+
+.section-divider {
+	@extend %section-divider;
+}
+
+.page-button-section {
+	margin: 25px;
+	width: 100%;
+	text-align: center;
+}
+
+.create-order-button {
+	@include form.primary-button($width: 250px);
+}
+
+.filter-section {
+	margin: {
+		top: 15px;
+		bottom: 15px;
+		left: 25px;
+		right: 10px;
+	}
+
+	text-align: left;
+	width: 100%;
+}
+
+.filter-row {
+	display: flex;
+	width: 90%;
+	align-items: center;
+}
+
+.filter-label {
+	@include common.fonts-define-font($family: var(--font-comfortaa));
+
+	margin: 20px;
+}
+
+.filter-values {
+	@include common.fonts-define-font($family: var(--font-avenir-light));
+
+	flex-grow: 1;
+}
+
+.filter-input-grouping {
+	@extend %input-grouping;
+
+	margin: 0;
+	background-color: common.$colors-white;
+	box-shadow: 0.5px 0.5px 1px common.$colors-black;
+}
+
+.order-search-field {
+	@extend %large-input-control;	
+}
+
+.order-search-field-icon {
+	@extend %input-grouping-icon;
+}
+
+.filter-value-icon {
+	border: {
+		width: 0.5px;
+		color: common.$colors-gray;
+		style: solid;
+		left: none;
+	}
+
+	height: 2em;
+	width: 50px;
+	cursor: pointer;
+	color: common.$colors-slate-gray;
+	display: inline-block;
+}
+
+.orders-listing {
+	width: 100%;
+}
+
+.order-box {
+	@include common.fonts-define-font();
+
+	border: {
+		width: 2px;
+		style: solid;
+		color: common.$colors-slate-gray;
+		radius: 15px;
+	}
+	margin: {
+		left: auto;
+		right: auto;
+		top: 40px;
+		bottom: 40px;
+	}
+
+	width: 70%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.order-box-info-body {
+	@extend %order-box-section-delineator;
+
+	width: 100%;
+	display: grid;
+	grid-template-columns: 3fr 4fr 3fr;
+}
+
+.order-box-general-info-column {
+	display: grid;
+	grid-auto-rows: 1fr;
+}
+
+.order-box-id {
+	@include common.fonts-define-font($size: common.$fonts-section) {
+		letter-spacing: 2px;
+	};
+
+	border: {
+		width: 1px;
+		style: solid;
+		color: common.$colors-slate-gray;
+
+		top-left-radius: 15px;
+		top: none;
+		left: none;
+		right: none;
+	}
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: common.$colors-lavender;
+	min-height: 100px;
+}
+
+.order-box-status {
+	@include common.fonts-define-font($size: common.$fonts-section) {
+		letter-spacing: 1.5px;
+	};
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: common.$colors-success;
+	min-height: 100px;
+}
+
+.order-box-customer-info-header {
+	@extend %order-box-section-header;
+}
+
+.order-box-misc-header {
+	@extend %order-box-section-header;
+
+	border: {
+		top-right-radius: 15px;
+	}
+}
+
+.order-box-customer-info-sub-column {
+	border-left: {
+		width: 1px;
+		style: solid;
+		color: common.$colors-slate-gray;
+	}
+
+	height: calc(100% - 45px);
+	display: grid;
+	grid-auto-rows: minmax(max-content, 100%);
+}
+
+.order-box-company-name {
+	font-style: italic;	
+}
+
+.order-box-datum {
+	border: {
+		width: 0.5px;
+		style: solid;
+		color: common.$colors-gray;
+		bottom: none;
+	}
+
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+
+	& > span, & > a {
+		padding: {
+			top: 10px;
+			bottom: 10px;
+			left: 10px;
+			right: 5px;
+		}
+
+		border-left: {
+			width: 0.5px;
+			style: solid;
+			color: common.$colors-silver;
+		}
+
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+		flex-direction: column;
+		height: 100%;
+		box-sizing: border-box;
+	}
+}
+
+.order-box-miscelleneous-datum {
+	padding: {
+		top: 15px;
+		bottom: 15px;
+		left: 10px;
+		right: 5px;
+	}
+
+	display: flex;
+	flex-direction: column;
+}
+
+.order-box-icon {
+	padding: {
+		top: 10px;
+		bottom: 10px;
+		left: 10px;
+		right: 10px;
+	}
+
+	width: 25px;
+	color: common.$colors-slate-gray;
+}
+
+.order-box-miscelleneous-label {
+	margin: {
+		bottom: 5px;
+	}
+
+	text-decoration: underline;
+}
+
+.order-box-button-row {
+	@extend %order-box-section-delineator;
+
+	padding: {
+		left: 35px;
+		right: 35px;
+	}
+
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	box-sizing: border-box;
+	min-height: 75px;
+	width: 100%;
+}
+
+.order-box-action-button {
+	@include form.small-button($bgColor: common.$colors-steel-blue, $width: 140px);
+
+	& > svg {
+		margin: {
+			left: 8px;
+			right: 8px;
+		}
+	}
+}
+
+.order-box-file-upload {
+	@extend %order-box-section-delineator;
+
+	width: 100%;
+}
+
+.order-box-notes {
+	padding: {
+		top: 10px;
+		bottom: 10px;
+	}
+
+	width: 100%;
+}

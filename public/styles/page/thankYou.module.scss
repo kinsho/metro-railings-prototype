@@ -1,0 +1,100 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'public/styles/foundation/common';
+@use 'public/styles/page/lib/base';
+@use 'public/styles/page/lib/form';
+
+/* ----------------------- STYLES ----------------------------- */
+
+.page-container {
+	margin: {
+		left: 20px;
+		right: 20px;
+		top: 10px;
+		bottom: 100px;
+	}
+}
+
+.page-header {
+	@extend %page-header;
+}
+
+.info-text {
+	@include common.fonts-define-font($family: var(--font-avenir-light), $size: common.$fonts-subsection);
+
+	margin: {
+		top: 25px;
+		bottom: 25px;
+		left: auto;
+		right: auto;
+	}
+
+	line-height: 1.5em;
+	max-width: 700px;
+}
+
+.salesman-table {
+	border: {
+		width: 1px;
+		color: common.$colors-silver;
+		style: double;
+	}
+
+	margin: {
+		top: 30px;
+		bottom: 30px;
+		left: auto;
+		right: auto;
+	}
+
+	display: flex;
+	flex-direction: column;
+	width: 95%;
+	max-width: 1000px;
+}
+
+.salesman-row {
+	border-bottom: {
+		width: 1px;
+		color: common.$colors-silver;
+		style: double;
+	}
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+
+	@include common.responsive-portrait-phone-only() {
+		flex-direction: column;
+	}
+}
+
+.salesman-name {
+	@include common.fonts-define-font($family: var(--font-avenir-light), $size: common.$fonts-section);
+
+	padding: 25px;
+	flex: 1;
+	display: flex;
+	align-items: center;
+}
+
+.salesman-contact-info-cell {
+	@include common.fonts-define-font($family: var(--font-avenir-light), $size: common.$fonts-subsection);
+
+	padding: 25px;
+	flex: 1;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	flex-direction: column;
+	white-space: pre-wrap;
+
+	@include common.responsive-portrait-phone-only() {
+		align-items: center;
+	}
+}
+
+.salesman-contact-info {
+	margin: 15px;
+}

@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss"
+  ],
+  "rules": {
+    "scss/dollar-variable-empty-line-before": false,
+    "import-notation": "url",
+    "scss/at-mixin-argumentless-call-parentheses": false,
+    "declaration-property-value-no-unknown": true,
+    "declaration-block-no-redundant-longhand-properties": false,
+    "at-rule-empty-line-before": false,
+    "scss/at-extend-no-missing-placeholder": false
+  }
+}

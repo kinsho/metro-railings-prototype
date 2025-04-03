@@ -1,0 +1,19 @@
+DATABASE
+
+All our data is stored on MongoDB's servers.
+
+IMAGES
+
+Vercel Blob is to be used to store and reference all images. Metadata for each image is kept within our database.
+
+GOOGLE REVIEWS
+
+Outscraper is used to scrape all of our google reviews into our database.
+
+E-MAIL
+
+Loops is used to send transactional e-mails to clients and admins.
+
+TEXTING
+
+Twilio will be used for texting.

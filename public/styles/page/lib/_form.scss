@@ -1,0 +1,319 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'sass:color';
+@use 'public/styles/foundation/common';
+
+/* ----------------------- MIX-INS ----------------------------- */
+
+/**
+ * A mix-in designed to style most buttons across the application
+ *
+ * @author kinsho
+ */
+@mixin primary-button($bgColor: common.$colors-steel-blue, $width: 100%, $isSquare: false) {
+	@include common.animations-transition-settings($property: all, $duration: 0.25s);
+	@include common.fonts-define-font($size: common.$fonts-section, $family: var(--font-avenir-light));
+
+	border: {
+		width: 1px;
+		style: solid;
+		color: common.$colors-slate_gray
+	}
+
+	@if $isSquare {
+		border-radius: 0;
+	} @else {
+		border-radius: 15px;
+	}
+
+	width: $width;
+	padding: 10px;
+	display: inline-block;
+	background-color: $bgColor;
+	color: common.$colors-white;
+	box-shadow: 2px 2px 3px common.$colors-black;
+	cursor: pointer;
+
+	&:active {
+		top: 5px;
+		box-shadow: 1px 1px 1px common.$colors-black;
+	}
+
+	&:disabled {
+		cursor: default;
+		opacity: 0.4;
+	}
+}
+
+@mixin minor-button($bgColor: common.$colors-faint-silver, $width: auto) {
+	@include common.animations-transition-settings($property: all, $duration: 0.25s);
+	@include common.fonts-define-font($family: var(--font-poppins), $size: common.$fonts-secondary);
+
+	border: {
+		width: 0.5px;
+		style: solid;
+		color: common.$colors-slate-gray;
+		radius: 1.5px;
+	}
+
+	padding: {
+		top: 2px;
+		bottom: 2px;
+		left: 5px;
+		right: 5px;
+	}
+
+	width: $width;
+	color: common.$colors-low-black;
+	background-color: $bgColor;
+	cursor: pointer;
+}
+
+/**
+ * A mix-in designed to style square buttons in the application
+ *
+ * @author kinsho
+ */
+@mixin small-button($bgColor: common.$colors-indian-red, $width: 100%) {
+	@include common.animations-transition-settings($property: all, $duration: 0.25s);
+	@include common.fonts-define-font($family: var(--font-poppins));
+
+	border: {
+		width: 1px;
+		style: solid;
+		color: common.$colors-slate-gray;
+		radius: 0.5px;
+	}
+
+	width: $width;
+	padding: 4.5px;
+	display: inline-block;
+	color: common.$colors-white;
+	background-color: $bgColor;
+	box-shadow: 2px 2px 3px common.$colors-black;
+	cursor: pointer;
+
+	&:active {
+		top: 5px;
+		box-shadow: 1px 1px 1px common.$colors-black;
+	}
+
+	&:disabled {
+		cursor: default;
+		opacity: 0.4;
+	}
+}
+
+/**
+ * A mix-in designed to style buttons that cover the bottom of a host container in banner fashion
+ *
+ * @author kinsho
+ */
+@mixin banner-button($bgColor: common.$colors-slate-gray) {
+	@include common.animations-transition-settings($property: all, $duration: 0.25s);
+	@include common.fonts-define-font($family: var(--font-avenir-heavy)) {
+		letter-spacing: 1.5px;
+		color: common.$colors-white;
+	}
+
+	border: {
+		width: 0;
+	}
+	margin: {
+		top: 25px;
+	}
+
+	width: 100%;
+	padding: 10px;
+	background-color: color.scale($bgColor, $lightness: 5%);
+	cursor: pointer;
+
+	&:disabled {
+		cursor: default;
+		opacity: 0.3;
+	}
+}
+
+@mixin naked-select-dropdown($bgColor: common.$colors-smoke-white) {
+	@include common.fonts-define-font($size: common.$fonts-subsection);
+
+	background-color: $bgColor;
+	border: 0;
+	text-align: right;
+}
+
+/* ----------------------- PLACEHOLDERS ----------------------------- */
+
+// Specialized input container meant to stow icons besides form fields
+%input-grouping {
+	margin: {
+		top: 5px;
+		bottom: 15px;
+	}
+
+	border: {
+		width: 1px;
+		radius: 5px;
+		style: solid;
+		color: common.$colors-gray;
+	}
+
+	display: inline-flex;
+	position: relative;
+	align-items: center;
+
+	& > input {
+		margin: {
+			left: 5px;
+			right: 5px;
+		}
+
+		border: none;
+		box-shadow: none;
+		flex: 1;
+	}
+}
+
+%input-grouping-icon {
+	color: common.$colors-slate-gray;
+	width: 50px;
+	height: 2em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&:first-child {
+		border-right: {
+			width: 0.5px;
+			color: common.$colors-gray;
+			style: solid;
+		}
+	}
+
+	&:last-child {
+		border-left: {
+			width: 0.5px;
+			color: common.$colors-gray;
+			style: solid;
+		}
+
+		cursor: pointer;
+	}
+}
+
+// Custom checkbox
+%input-checkbox {
+	// Hide the browser's native checkbox as it's quite ugly 
+	appearance: none;
+	margin: 0;
+	background-color: common.$colors-white;
+
+	& + label {
+		cursor: pointer;
+
+		&::before {
+			content: '\2713 ';
+
+			border: {
+				width: 1px;
+				radius: 5px;
+				style: solid;
+				color: common.$colors-slate-gray;
+			}
+
+			margin: {
+				right: 10px;
+			}
+
+			background-color: common.$colors-smoke-white;
+			color: common.$colors-smoke-white;
+			display: inline-block;
+			box-shadow: inset 0 1px 3px rgb(0 0 0 / 20%);
+
+			@include common.responsive-tablet-up() {
+				width: 20px;
+				height: 20px;
+				font-size: 20px;
+				line-height: 20px;
+			}
+
+			@include common.responsive-phone-only() {
+				width: 12px;
+				height: 12px;
+				font-size: 12px;
+				line-height: 12px;
+			}
+		}
+	}
+
+	&:checked + label::before {
+		color: common.$colors-success;
+	}
+}
+
+%label {
+	@include common.fonts-define-font($size: common.$fonts-secondary, $family: var(--font-avenir-heavy)) {
+		letter-spacing: 0.3px;
+		color: common.$colors-low-black;
+	}
+
+	margin: {
+		top: 5px;
+		bottom: 5px;
+	}
+
+	align-self: flex-start;
+}
+
+%secondary-label {
+	@include common.fonts-define-font($size: common.$fonts-secondary, $family: var(--font-avenir-heavy)) {
+		letter-spacing: 0.1px;
+		color: common.$colors-slate-gray;
+	}
+}
+
+%input-control {
+	@include common.fonts-define-font($size: common.$fonts-secondary, $family: var(--font-poppins));
+
+	height: 2em;
+	color: common.$colors-low-black;
+	box-sizing: border-box;
+
+	&::placeholder {
+		font-style: italic;
+		opacity: 0.4;
+	}
+
+	&.optional-field {
+		background-color: common.$colors-lavender;
+	}
+
+	&:disabled {
+		opacity: 0.4;
+	}
+
+	&.error {
+		background-color: common.$colors-negative-red;
+	}
+}
+
+%small-input-control {
+	@extend %input-control;
+
+	width: 20vw;
+	max-width: 150px;
+}
+
+%medium-input-control {
+	@extend %input-control;
+
+	width: 35vw;
+	max-width: 260px;
+}
+
+%large-input-control {
+	@extend %input-control;
+
+	width: 50vw;
+	max-width: 375px;
+}

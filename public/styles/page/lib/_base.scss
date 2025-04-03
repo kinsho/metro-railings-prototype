@@ -1,0 +1,54 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'public/styles/foundation/common';
+
+/* ----------------------- PLACEHOLDERS ----------------------------- */
+
+%page-header {
+	@include common.fonts-define-font($size: common.$fonts-subheader, $family: var(--font-comfortaa));
+
+	margin: {
+		top: 25px;
+		bottom: 25px;
+	}
+
+	text-align: center;
+}
+
+%page-divider {
+	margin: {
+		top: 20px;
+		bottom: 20px;
+	}
+
+	width: 100%;
+	height: 1px;
+	background-color: common.$colors-low-black;
+}
+
+%section-divider {
+	margin: {
+		top: 5px;
+		bottom: 5px;
+	}
+
+	width: 100%;
+	height: 0.5px;
+	background-color: common.$colors-gray;
+}
+
+%footer-offset {
+	display: block;
+
+	@include common.responsive-desktop-only()  {
+		height: 50px;
+	}
+
+	@include common.responsive-portrait-mobile-only() {
+		height: 75px;
+	}
+
+	@include common.responsive-landscape-mobile-only() {
+		height: 50px;
+	}
+}

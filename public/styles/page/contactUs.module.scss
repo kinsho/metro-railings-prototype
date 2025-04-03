@@ -1,0 +1,89 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'public/styles/foundation/common';
+@use 'public/styles/page/lib/form';
+@use 'public/styles/page/lib/base';
+
+/* ----------------------- STYLES ----------------------------- */
+
+.page-header {
+	@extend %page-header;
+}
+
+.page-divider {
+	@extend %page-divider;
+}
+
+.contact-us-form {
+	border: {
+		style: solid;
+		width: 1px;
+		color: common.$colors-slate-gray;
+		radius: 20px;
+	}
+
+	margin: {
+		left: auto;
+		right: auto;
+		bottom: 100px;
+	}
+
+	max-width: 600px;
+	width: 85vw;
+	background-color: common.$colors-white;
+}
+
+.contact-us-form-body {
+	padding: {
+		top: 15px;
+		bottom: 15px;
+		left: 30px;
+		right: 30px;
+	}
+}
+
+.contact-us-form-label {
+	@extend %label;
+
+	display: block;
+}
+
+.contact-us-form-input-grouping {
+	@extend %input-grouping;
+}
+
+.contact-us-form-input-grouping-icon {
+	@extend %input-grouping-icon;
+}
+
+.contact-us-form-input-field {
+	@extend %large-input-control;
+}
+
+.contact-us-form-select-field {
+	@extend %large-input-control;
+
+	margin: {
+		top: 5px;
+		bottom: 15px;
+	}
+}
+
+.contact-us-form-submit {
+	@include form.banner-button();
+
+	border: {
+		bottom-left-radius: 20px;
+		bottom-right-radius: 20px;
+	}
+
+	text-align: center;
+}
+
+.contact-us-form-comments-field {
+	@extend %large-input-control;
+
+	padding: 5px;
+	max-width: 500px;
+	height: 250px;
+}

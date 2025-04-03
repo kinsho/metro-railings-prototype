@@ -1,0 +1,337 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'public/styles/foundation/common';
+@use 'public/styles/page/lib/form';
+
+/* ----------------------- HEADER STYLES ----------------------------- */
+
+.top-menu-space {
+	display: block;
+
+	@include common.responsive-desktop-only() {
+		height: 70px;
+	}
+
+	@include common.responsive-portrait-mobile-only() {
+		height: 90px;
+	}
+
+	@include common.responsive-landscape-mobile-only() {
+		height: 55px;
+	}
+}
+
+.top-menu {
+	@include common.fonts-define-font($family: var(--font-raleway)) {
+		letter-spacing: 0.1em;
+		text-decoration: none;
+		color: common.$colors-slate-gray;
+	};
+
+	border-bottom: {
+		width: 3px;
+		style: solid;
+		color: common.$colors-black;
+	}
+
+	position: fixed;
+	display: flex;
+	flex-wrap: wrap;
+	z-index: 500;
+	width: 100%;
+	background-color: common.$colors-smoke-white;
+	opacity: 0.95;
+
+	@include common.responsive-print-only() {
+		display: none;
+	}
+}
+
+.top-menu-logo-container {
+	flex: 2;
+	min-width: 250px;
+	position: relative;
+
+	// Keep the top menu height parameters here and not directly on the header element. This allows the menu to expand.
+	@include common.responsive-desktop-only() {
+		height: 70px;
+	}
+
+	@include common.responsive-portrait-mobile-only() {
+		height: 90px;
+	}
+
+	@include common.responsive-landscape-mobile-only() {
+		height: 55px;
+	}
+
+	& > img {
+		cursor: pointer;
+		object-fit: contain;
+	}
+}
+
+.desktop-menu-links {
+	margin: {
+		right: 30px;
+	}
+
+	flex: 8;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+
+	@include common.responsive-mobile-only() {
+		display: none;
+	}
+}
+
+.desktop-icon-list {
+	border-left: {
+		style: solid;
+		width: 1px;
+		color: common.$colors-low-black;
+	}
+
+	padding: {
+		left: 10px;
+		right: 10px;
+	}
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 75px;
+	box-sizing: border-box;
+	cursor: pointer;
+	text-decoration: none;
+	color: common.$colors-slate-gray;
+	background-color: rgba(0 0 0 / 10%);
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.mobile-menu-expander {
+	margin: {
+		left: auto;
+	}
+
+	border-left: {
+		style: solid;
+		width: 0.5px;
+		color: common.$colors-low-black;
+	}
+
+	padding: {
+		left: 10px;
+		right: 10px;
+	}
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100px;
+	box-sizing: border-box;
+	cursor: pointer;
+	text-decoration: none;
+	color: common.$colors-slate-gray;
+	background-color: rgba(0 0 0 / 10%);
+
+	@include common.responsive-desktop-only() {
+		display: none;
+	}
+
+	& > svg {
+		margin-right: 10px;
+	}
+}
+
+.mobile-menu-links {
+	@include common.animations-transition-settings($property: height, $duration: 0.4s);
+
+	border-top: {
+		width: 0.5px;
+		style: solid;
+		color: common.$colors-low-black;
+	}
+
+	height: 0;
+	width: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+
+	@include common.responsive-desktop-only() {
+		display: none;
+	}
+}
+
+.desktop-menu-link-slot {
+	margin: {
+		left: 25px;
+		right: 25px;
+	}
+
+	text-align: center;
+	max-width: 250px;
+
+	@include common.responsive-desktop-only {
+		flex: 1;
+	}
+
+	@include common.responsive-mobile-only {
+		margin: {
+			top: 25px;
+			bottom: 25px;
+			right: 25px;
+			left: 0;
+		}
+
+		flex: none;
+		width: 100%;
+		text-align: right;
+	}
+}
+
+.mobile-menu-link-slot {
+	margin: {
+		top: 20px;
+		bottom: 20px;
+		right: 25px;
+	}
+
+	width: 100%;
+	text-align: right;
+}
+
+.top-menu-link {
+	cursor: pointer;
+	text-decoration: none;
+	color: common.$colors-slate-gray;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+/* ----------------------- FOOTER STYLES ----------------------------- */
+
+.footer-public {
+	display: flex;
+	align-items: center;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 500;
+	width: 100%;
+
+	@include common.responsive-desktop-only() {
+		height: 50px;
+		background-color: rgba(0 0 0 / 75%);
+	}
+
+	@include common.responsive-mobile-only() {
+		border-top: {
+			width: 1px;
+			style: solid;
+			color: common.$colors-black;
+		}
+	}
+
+	@include common.responsive-portrait-mobile-only() {
+		height: 75px;
+	}
+
+	@include common.responsive-landscape-mobile-only() {
+		height: 50px;
+	}
+
+	@include common.responsive-print-only() {
+		display: none;
+	}
+}
+
+.footer-contact-number {
+	@include common.fonts-define-font($size: common.$fonts-section, $family: var(--font-comfortaa)) {
+		color: common.$colors-white;
+		letter-spacing: 5px;
+	};
+
+	margin: {
+		left: 25px;
+		right: auto;
+	}
+
+	flex: 1;
+	text-align: left;
+
+	@include common.responsive-mobile-only() {
+		display: none;
+	}
+
+	& > svg {
+		margin-right: 10px;
+	}
+}
+
+.footer-copyright {
+	@include common.fonts-define-font($size: common.$fonts-section, $family: var(--font-comfortaa)) {
+		color: common.$colors-white;
+		letter-spacing: 5px;
+	};
+
+	margin: {
+		left: auto;
+		right: 25px;
+	}
+
+	flex: 1;
+	text-align: right;
+
+	@include common.responsive-mobile-only() {
+		display: none;
+	}
+
+	& > svg {
+		margin-right: 10px;
+	}
+}
+
+.footer-mobile-contact-us, .footer-mobile-call-us {
+	@include common.fonts-define-font($size: common.$fonts-subsection, $family: var(--font-comfortaa)) {
+		color: common.$colors-white;
+		letter-spacing: 0.5px;
+	};
+
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+
+	@include common.responsive-desktop-only() {
+		display: none;
+	}
+
+	@include common.responsive-portrait-mobile-only() {
+		height: 75px;
+	}
+
+	@include common.responsive-landscape-mobile-only() {
+		height: 50px;
+	}
+
+	& > svg {
+		margin-right: 10px;
+	}
+}
+
+.footer-mobile-contact-us {
+	background-color: common.$colors-indian-red;
+}
+
+.footer-mobile-call-us {
+	background-color: common.$colors-cadet-blue;
+}

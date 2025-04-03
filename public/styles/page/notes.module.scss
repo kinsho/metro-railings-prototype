@@ -1,0 +1,299 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'sass:math';
+@use 'public/styles/foundation/common';
+@use 'public/styles/page/lib/form';
+
+/* ------------------ GENERAL STYLES ----------------------- */
+
+.note-listing {
+	border: {
+		style: solid;
+		width: 1px;
+		color: common.$colors-gray;
+	}
+
+	margin: {
+		top: 20px;
+		left: auto;
+		right: auto;
+	}
+
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 90%;
+}
+
+.new-note-upload {
+	width: 100%;
+}
+
+.new-note-text-container {
+	width: 100%;
+	min-height: 120px;
+	padding: 5px;
+	border: 0;
+	box-shadow: none;
+	resize: none;
+	box-sizing: border-box;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.new-note-actions {
+	padding: {
+		top: 25px;
+		bottom: 25px;
+	}
+
+	background-color: common.$colors-faint-silver;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.note-prop-field {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	flex: 1;
+}
+
+.note-prop-field-label {
+	@extend %secondary-label;
+
+	margin-bottom: 3px;
+}
+
+.note-prop-field-input {
+	@extend %medium-input-control;
+}
+
+.note-prop-field-submit-button {
+	@include form.small-button($bgColor: common.$colors-pale-violet-red, $width: 150px);
+	@include common.fonts-define-font($family: Avenir Next, $size: common.$fonts-secondary);
+}
+
+.note-lazy-load-link {
+	@include common.fonts-define-font($family: var(--font-poppins)) {
+		text-decoration: none;
+		color: common.$colors-steel-blue;
+		letter-spacing: 1px;
+	}
+
+	margin: {
+		top: 20px;
+		bottom: 20px;
+	}
+
+	width: 100%;
+	text-align: center;
+	cursor: pointer;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.note-records-container {
+	margin: {
+		left: auto;
+		right: auto;
+	}
+
+	width: 90%;
+}
+
+.note-record {
+	border: {
+		width: 1px;
+		style: solid;
+		color: common.$colors-gray;
+		spacing: 0;
+	}
+
+	display: grid;
+	width: 100%;
+	min-height: 120px;
+
+	&-plain {
+		@extend .note-record;
+
+		grid-template-columns: [zero] 60px [first] 3fr [second] 14fr;
+	}
+
+	&-task-open {
+		@extend .note-record;
+
+		grid-template-columns: [zero] 60px [first] 3fr [second] 11fr [third] 2fr [fourth] 1fr;
+		background-color: common.$colors-lavender;
+	}
+
+	&-task-closed {
+		@extend .note-record;
+
+		grid-template-columns: [zero] 60px [first] 3fr [second] 11fr [third] 3fr;
+	}
+}
+
+.note-metadata-cell {
+	border-right: {
+		style: solid;
+		width: 1px;
+		color: common.$colors-silver;
+	}
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100%;
+}
+
+.note-date-subcell {
+	@include common.fonts-define-font($family: var(--font-raleway), $size: common.$fonts-subsection) {
+		color: common.$colors-slate-gray;
+	};
+
+	margin: {
+		top: 10px;
+	}
+}
+
+.note-author-subcell {
+	@include common.fonts-define-font($family: var(--font-raleway), $size: common.$fonts-subsection);
+
+	margin: {
+		top: 20px;
+		bottom: 10px;
+	}
+}
+
+.note-text-cell {
+	@include common.fonts-define-font();
+
+	border-right: {
+		style: solid;
+		width: 1px;
+		color: common.$colors-silver;
+	}
+
+	padding: 15px;
+	display: flex;
+	align-items: center;
+}
+
+.note-cell-special-header {
+	@include common.fonts-define-font($family: var(--font-raleway), $size: common.$fonts-section) {
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		color: common.$colors-low-black;
+	};
+
+	border-right: {
+		style: solid;
+		width: 1px;
+		color: common.$colors-silver;
+	}
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.note-cell-special-header-text {
+	transform: rotate(270deg);
+}
+
+.task-metadata-cell {
+	@include common.fonts-define-font($family: var(--font-raleway), $size: common.$fonts-section);
+
+	border-right: {
+		style: solid;
+		width: 1px;
+		color: common.$colors-silver;
+	}
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.task-status-subcell {
+	margin: {
+		top: 5px;
+		bottom: 10px;
+	}
+
+	text-align: center;
+
+	&-open {
+		@extend .task-status-subcell;
+
+		@include common.fonts-define-font($family: var(--font-raleway)) {
+			color: common.$colors-sea-green;
+		};
+	}
+
+	&-resolved {
+		@extend .task-status-subcell;
+
+		@include common.fonts-define-font($family: var(--font-raleway)) {
+			color: common.$colors-pale-violet-red;
+		};
+	}
+
+	&-cancelled {
+		@extend .task-status-subcell;
+
+		@include common.fonts-define-font($family: var(--font-raleway)) {
+			color: common.$colors-slate-gray;
+		};
+	}
+}
+
+.task-owners-subcell {
+	@include common.fonts-define-font($family: var(--font-raleway));
+
+	margin: {
+		top: 10px;
+		bottom: 5px;
+	}
+
+	text-align: center;
+}
+
+.task-actions {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.task-icon {
+	margin: {
+		top: 10px;
+		bottom: 10px;
+	}
+
+	size: common.$fonts-subsection;
+	cursor: pointer;
+
+	&-resolved {
+		@extend .task-icon;
+
+		color: common.$colors-pale-violet-red;
+	}
+
+	&-cancelled {
+		@extend .task-icon;
+
+		color: common.$colors-slate-gray;
+	}
+}

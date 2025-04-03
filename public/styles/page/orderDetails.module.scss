@@ -1,0 +1,475 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'public/styles/foundation/common';
+@use 'public/styles/page/lib/base';
+@use 'public/styles/page/lib/form';
+
+/* ----------------------- GENERAL STYLES ----------------------------- */
+
+.page-container {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+}
+
+.page-header {
+	@extend %page-header;
+}
+
+.first-page-divider {
+	@extend %page-divider;
+
+	margin-top: 0;
+}
+
+.page-divider {
+	@extend %page-divider;
+}
+
+.section-divider {
+	@extend %section-divider;
+}
+
+.order-form-label {
+	@extend %label;
+
+	margin-right: 10px;
+}
+
+.order-form-input-directions {
+	@include common.fonts-define-font($size: common.$fonts-special, $family: var(--font-avenir-light)) {
+		letter-spacing: 0.3px;
+		color: common.$colors-low-black;
+		font-style: italic;
+	}
+
+	margin: {
+		left: 5px;
+		right: 5px;
+	}
+}
+
+.processed-order-header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.order-id-box {
+	@include common.fonts-define-font($size: common.$fonts-subsection, $family: var(--font-comfortaa)) {
+		font-style: italic;
+	};
+
+	border: {
+		width: 0.5px;
+		style: solid;
+		color: common.$colors-low-black;
+		bottom: none;
+		top-left-radius: 15px;
+		top-right-radius: 15px;
+	}
+
+	padding: 15px;
+	background-color: common.$colors-gray;
+	flex: 10;
+}
+
+.order-form-section {
+	margin: {
+		top: 10px;
+		bottom: 10px;
+		left: 25px;
+		right: 25px;
+	}
+
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.order-prices-section {
+	margin: {
+		top: 35px;
+		bottom: 10px;
+	}
+
+	border: {
+		radius: 10px;
+		width: 1px;
+		style: solid;
+		color: common.$colors-silver;
+	}
+
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+}
+
+.input-group {
+	margin: {
+		top: 5px;
+		left: 20px;
+		right: 20px;
+		bottom: 10px;
+	}
+
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+}
+
+.wide-input-group {
+	@extend .input-group;
+
+	align-items: flex-start;
+
+	@include common.responsive-desktop-only() {
+		width: 60%;
+	}
+
+	@include common.responsive-tablet-only() {
+		width: 70%;
+	}
+
+	@include common.responsive-phone-only() {
+		width: 80%;
+	}
+
+	@include common.responsive-portrait-phone-only() {
+		width: 90%;
+	}
+}
+
+.modal-input-group {
+	@extend .input-group;
+
+	padding: {
+		left: 10px;
+		right: 10px;
+	}
+
+	flex: 1;
+	align-items: flex-start;
+
+	@include common.responsive-phone-only() {
+		border-bottom: {
+			style: solid;
+			width: 1px;
+			color: common.$colors-low-black;
+		}
+
+		flex-direction: column;
+	}
+}
+
+.price-group {
+	margin: {
+		top: 10px;
+		bottom: 10px;
+		left: 15px;
+		right: 15px;
+	}
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.order-details-input-row {
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+
+.status-input-control {
+	@include form.naked-select-dropdown();
+	@extend %input-control;
+
+	margin: {
+		left: 30px;
+		right: 15px;
+	}
+
+	padding: {
+		left: 5px;
+		right: 8px;
+	}
+}
+
+.small-input-control {
+	@extend %small-input-control;
+}
+
+.medium-input-control {
+	@extend %medium-input-control;
+}
+
+.large-input-control {
+	@extend %large-input-control;
+}
+
+.description-textarea {
+	@extend %input-control;
+
+	height: 100px;
+	width: 100%;
+}
+
+.input-sub-group {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+.design-input-group {
+	display: flex;
+
+	& > textarea {
+		@extend %input-control;
+
+		margin: {
+			left: 7px;
+			right: 7px;
+		}
+
+		height: 6em;
+
+		@include common.responsive-tablet-up() {
+			min-width: 250px;
+			max-width: 350px;
+		}
+		@include common.responsive-phone-only() {
+			min-width: 200px;
+			max-width: 275px;
+		}
+	}
+}
+
+.order-details-hint-icon {
+	margin-left: 5px;
+	font-size: common.$fonts-subsection;
+	color: common.$colors-logo-blue;
+}
+
+.order-input-neighboring-text {
+	@include common.fonts-define-font($size: common.$fonts-secondary, $family: var(--font-comfortaa)) {
+		font-style: italic;
+	};
+
+	margin: {
+		left: 3.5px;
+		right: 3.5px;
+	}
+}
+
+.price-label {
+	@include common.fonts-define-font($size: common.$fonts-secondary, $family: var(--font-avenir-heavy)) {
+		letter-spacing: 1px;
+		color: common.$colors-low-black;
+	}
+}
+
+.price-text {
+	@include common.fonts-define-font($size: common.$fonts-secondary, $family: var(--font-comfortaa)) {
+		letter-spacing: 0.5px;
+	};
+}
+
+.order-payment-section {
+	margin: {
+		top: 10px;
+		bottom: 10px;
+		left: 20px;
+		right: auto;
+	}
+
+	display: flex;
+	flex-direction: column;
+	justify-self: center;
+	min-width: 750px;
+}
+
+.invoice-amount-modal-form {
+	display: flex;
+	margin-top: 15px;
+
+	@include common.responsive-phone-only() {
+		flex-direction: column;
+	}
+}
+
+.invoice-amount-modal-info {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.invoice-table {
+	border: {
+		style: solid;
+		width: 0.5px;
+		color: common.$colors-black;
+	}
+
+	margin: {
+		right: 20px;
+	}
+
+	min-width: 600px;
+}
+
+.invoice-table-header-row {
+	@include common.fonts-define-font($size: common.$fonts-secondary, $family: var(--font-avenir-heavy)) {
+		letter-spacing: 0.5px;
+		color: common.$colors-white;
+	}
+
+	padding: {
+		left: 15px;
+		right: 15px;
+		top: 10px;
+		bottom: 10px;
+	}
+
+	background-color: common.$colors-slate-gray;
+	display: grid;
+	grid-template-columns: 1fr 2fr 2fr 2fr 2fr 3fr;
+}
+
+.invoice-table-row {
+	@include common.fonts-define-font($family: var(--font-poppins), $size: common.$fonts-secondary);
+
+	padding: {
+		left: 15px;
+		right: 15px;
+		top: 10px;
+		bottom: 10px;
+	}
+
+	display: grid;
+	grid-template-columns: 1fr 2fr 2fr 2fr 2fr 3fr;
+
+	&:nth-of-type(even) {
+		background-color: common.$colors-white;
+	}
+
+	&:nth-of-type(odd) {
+		background-color: common.$colors-faint-silver;
+	}
+}
+
+.invoice-table-header-cell {
+	padding: {
+		left: 5px;
+		right: 5px;
+	}
+
+	text-align: center;
+}
+
+.invoice-table-cell {
+	padding: {
+		left: 5px;
+		right: 5px;
+	}
+
+	text-align: center;
+}
+
+.invoice-status-cancelled {
+	color: common.$colors-slate-gray;
+}
+
+.invoice-status-finalized {
+	color: common.$colors-success;
+}
+
+.invoice-status-open {
+	color: common.$colors-indian-red;
+}
+
+.invoice-table-link {
+	@extend .invoice-table-cell;
+
+	text-decoration: underline;
+	color: common.$colors-cadet-blue;
+	cursor: pointer;
+}
+
+.order-details-footer-padding {
+	height: 100px;
+}
+
+.order-details-action-footer {
+	border-top: {
+		style: solid;
+		width: 3px;
+		color: common.$colors-slate-gray;
+	}
+
+	padding: {
+		top: 15px;
+		bottom: 15px;
+	}
+
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 40px;
+	z-index: 100;
+	background-color: common.$colors-white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow-x: scroll;
+	overflow-y: clip;
+
+	@include common.responsive-landscape-phone-only() {
+		height: 40px;
+	}
+}
+
+.order-details-section-action-button {
+	@include form.minor-button();
+
+	margin: {
+		top: 5px;
+		bottom: 5px;
+		left: 10px;
+		right: 10px;
+	}
+}
+
+.salesman-delete-button, .invoice-cancel-button {
+	@include form.minor-button();
+
+	& > svg {
+		margin-left: 5px;
+	}
+}
+
+.order-details-action-button {
+	@include form.primary-button($bgColor: common.$colors-cadet-blue, $width: 250px);
+
+	margin: {
+		left: 20px;
+		right: 20px;
+	}
+}
+
+.order-details-reset-button {
+	@include form.primary-button($bgColor: common.$colors-indian-red, $width: 100px);
+
+	margin: {
+		left: 20px;
+		right: 20px;
+	}
+}

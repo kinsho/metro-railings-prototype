@@ -1,0 +1,14 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'public/styles/foundation/common';
+@use 'public/styles/page/lib/base';
+
+/* ----------------------- CLASSES ----------------------------- */
+
+.page-header {
+	@extend %page-header;
+}
+
+.page-divider {
+	@extend %page-divider;
+}

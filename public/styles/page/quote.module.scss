@@ -1,0 +1,593 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'public/styles/foundation/common';
+@use 'public/styles/page/lib/base';
+@use 'public/styles/page/lib/form';
+
+/* ------------------ ANIMATIONS ----------------------- */
+
+@include common.animations-keyframes($name: scroll-down-arrow) {
+	0% {
+		transform: translate(0, 0);
+	}
+
+	50% {
+		transform: translate(0, 10%);
+	}
+
+	100% {
+		transform: translate(0, 0);
+	}
+}
+
+/* ----------------------- STYLES ----------------------------- */
+
+.page-container {
+	margin-bottom: 100px;
+}
+
+.page-header {
+	@extend %page-header;
+}
+
+.logo-header-container {
+	margin: {
+		bottom: 25px;
+	}
+
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	background-color: common.$colors-logo-blue;
+}
+
+.logo-header {
+	width: 180px;
+	height: 135px;
+}
+
+.info-section {
+	margin: {
+		left: auto;
+		right: auto;
+	}
+
+	width: 95%;
+	display: grid;
+
+	@include common.responsive-desktop-only() {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	@include common.responsive-tablet-only() {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include common.responsive-phone-only() {
+		grid-template-columns: 1fr;
+	}
+}
+
+.info-column {
+	@include common.fonts-define-font($family: var(--font-avenir-light)) {
+		line-height: 1.75em;
+	};
+
+	margin: {
+		left: 10px;
+		right: 10px;
+		top: 15px;
+		bottom: 15px;
+	}
+
+	&-company {
+		@extend .info-column;
+
+		@include common.responsive-desktop-only() {
+			text-align: center;
+		}
+
+		@include common.responsive-tablet-only() {
+			text-align: left;
+			order: 1;
+		}
+
+		@include common.responsive-phone-only() {
+			text-align: center;
+			order: 2;
+		}
+	}
+
+	&-order {
+		@extend .info-column;
+
+		@include common.responsive-desktop-only() {
+			text-align: center;
+		}
+
+		@include common.responsive-tablet-only() {
+			text-align: left;
+			order: 3;
+		}
+
+		@include common.responsive-phone-only() {
+			text-align: center;
+			order: 1;
+		}
+	}
+
+	&-customer {
+		@extend .info-column;
+
+		@include common.responsive-desktop-only() {
+			text-align: center;
+		}
+
+		@include common.responsive-tablet-only() {
+			text-align: right;
+			order: 4;
+		}
+
+		@include common.responsive-phone-only() {
+			text-align: center;
+			order: 4;
+		}
+	}
+
+	&-sales-reps {
+		@extend .info-column;
+
+		@include common.responsive-desktop-only() {
+			text-align: center;
+		}
+
+		@include common.responsive-tablet-only() {
+			text-align: right;
+			order: 2;
+		}
+
+		@include common.responsive-phone-only() {
+			text-align: center;
+			order: 3;
+		}
+	}
+}
+
+.info-column-header {
+	@include common.fonts-define-font($family: var(--font-avenir-heavy), $size: common.$fonts-subsection);
+}
+
+.salesman-listing {
+	border-bottom: {
+		width: 1px;
+		style: solid;
+		color: common.$colors-silver;
+	}
+
+	padding: {
+		top: 3px;
+		bottom: 3px;
+	}
+
+	display: flex;
+	flex-direction: column;
+
+	&:last-of-type {
+		border-bottom: none;
+	}
+}
+
+.salesman-listing-cell {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.quote-status-text {
+	text-transform: uppercase;
+}
+
+.quote-container {
+	margin: {
+		left: auto;
+		right: auto;
+		top: 25px;
+	}
+
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+	width: 90%;
+}
+
+.quote-body {
+	@include common.fonts-define-font($family: var(--font-avenir-light), $size: common.$fonts-default);
+
+	border-top: {
+		style: solid;
+		width: 0.5px;
+		color: common.$colors-slate-gray;
+	}
+
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	width: 100%;
+
+	@include common.responsive-portrait-phone-only() {
+		grid-template-columns: 1fr;
+	}
+}
+
+.quote-memo {
+	border-right: {
+		style: solid;
+		width: 0.5px;
+		color: common.$colors-slate-gray;
+	}
+
+	padding: {
+		top: 15px;
+		bottom: 15px;
+		left: 15px;
+		right: 35px;
+	}
+
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+
+	@include common.responsive-portrait-phone-only() {
+		border-right: none;
+	}
+}
+
+.quote-design-details {
+	padding: {
+		top: 15px;
+		bottom: 15px;
+		right: 15px;
+	}
+
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+}
+
+.quote-design-row {
+	padding: {
+		top: 10px;
+		bottom: 10px;
+		left: 35px;
+	}
+
+	border: {
+		style: solid;
+		width: 0.25px;
+		color: common.$colors-silver;
+
+		left: none;
+		right: none;
+	}
+
+	display: flex;
+	align-items: center;
+
+	&:first-of-type {
+		border-top: none;
+	}
+
+	&:last-of-type {
+		border-bottom: none;
+	}
+}
+
+.quote-design-row-label {
+	margin-right: 15px;
+	text-align: right;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	flex-direction: column;
+	flex: 1;
+}
+
+.quote-design-row-category {
+	text-transform: uppercase;
+}
+
+.quote-design-row-selection {
+	font-weight: 700;
+}
+
+.quote-design-row-descriptor {
+	margin-left: 15px;
+	text-align: left;
+	flex: 3;
+}
+
+.quote-price-line {
+	border-top: {
+		width: 0.5px;
+		color: common.$colors-slate-gray;
+		style: ridge;
+	}
+
+	padding: {
+		top: 10px;
+		bottom: 10px;
+	}
+
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.quote-price-header {
+	@include common.fonts-define-font($family: var(--font-comfortaa), $size: common.$fonts-subsection);
+
+	text-align: right;
+	padding-right: 45px;
+	flex: 4;
+
+	@include common.responsive-portrait-phone-only() {
+		flex: 1;
+	}
+}
+
+.quote-price-listing {
+	@include common.fonts-define-font($family: var(--font-roboto-mono), $size: common.$fonts-subsection);
+
+	padding: {
+		left: 10px;
+		right: 10px;
+	}
+
+	flex: 1;
+}
+
+.invoice-body {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+
+	@include common.responsive-mobile-only() {
+		grid-template-columns: 1fr;
+	}
+}
+
+.invoice-body-section-header {
+	@include common.fonts-define-font($family: var(--font-avenir-heavy)) {
+		text-decoration: underline;
+	};
+
+	margin: {
+		top: 15px;
+		bottom: 15px;
+	}
+}
+
+.invoice-body-row {
+	margin: {
+		top: 5px;
+		bottom: 5px;
+	}
+
+	width: 100%;
+	display: flex;
+	align-items: center;
+
+	&-center {
+		@extend .invoice-body-row;
+		@include common.fonts-define-font($family: var(--font-avenir-heavy));
+
+		justify-content: center;
+	}
+}
+
+.invoice-body-label {
+	@include common.fonts-define-font($family: var(--font-comfortaa), $size: common.$fonts-secondary);
+
+	margin-right: 5px;
+	text-align: right;
+	flex: 1;
+}
+
+.invoice-body-amount {
+	@include common.fonts-define-font($family: var(--font-avenir-heavy));
+
+	margin-left: 5px;
+	text-align: left;
+	flex: 1;
+}
+
+.invoice-body-section {
+	@include common.fonts-define-font($family: var(--font-comfortaa));
+
+	margin: {
+		top: 15px;
+		bottom: 15px;
+		left: 25px;
+		right: 25px;
+	}
+
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+}
+
+.terms-accepted-section {
+	margin: {
+		top: 25px;
+		bottom: 25px;
+		left: auto;
+		right: auto;
+	}
+
+	padding: {
+		top: 5px;
+		bottom: 5px;
+		left: 10px;
+		right: 10px;
+	}
+
+	border: {
+		width: 2px;
+		color: common.$colors-silver;
+		style: solid;
+		radius: 15px;
+	}
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 500px;
+
+	@include common.responsive-portrait-phone-only() {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+}
+
+.terms-accepted-checkbox {
+	@extend %input-checkbox;
+}
+
+.terms-accepted-label {
+	@include common.fonts-define-font($family: var(--font-avenir-heavy)) {
+		letter-spacing: 0.3px;
+		color: common.$colors-low-black;
+	}
+}
+
+.terms-and-conditions-link {
+	@include common.fonts-define-font($family: var(--font-avenir-heavy)) {
+		letter-spacing: 0.3px;
+		color: common.$colors-low-black;
+	}
+
+	color: common.$colors-logo-blue;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.terms-and-conditions {
+	@include common.fonts-define-font($family: var(--font-avenir-light));
+
+	margin: {
+		top: 35px;
+		left: 5%;
+		right: 5%;
+	}
+
+	line-height: 1.5em;
+	letter-spacing: 0.5px;
+}
+
+.terms-and-conditions-header {
+	@include common.fonts-define-font($family: var(--font-avenir-heavy)) {
+		text-decoration: underline;
+	}
+
+	margin: {
+		bottom: 20px;
+	}
+
+	text-align: center;
+	width: 100%;
+}
+
+.modal-scroll-down-notice {
+	@include common.animations-transition-settings($property: height);
+	@include common.fonts-define-font($size: common.$fonts-secondary) {
+		color: common.$colors-white;
+	};
+
+	padding: {
+		top: 5px;
+		bottom: 5px;
+	}
+
+	background-color: common.$colors-slate-gray;
+	text-align: center;
+	cursor: pointer;
+}
+
+.modal-scroll-down-icon {
+	@include common.animations-animation-settings($keyframeSet: scroll-down-arrow, $duration: 0.5s, $timing: ease-in-out, $iterations: infinite);
+
+	margin-left: 5px;
+}
+
+.print-iframe {
+	display: none;
+}
+
+.print-button {
+	@include form.small-button($bgColor: common.$colors-logo-blue, $width: 100px);
+}
+
+.print-icon {
+	margin-left: 3px;
+}
+
+.payment-section {
+	margin: {
+		top: 20px;
+		bottom: 20px;
+	}
+
+	display: flex;
+	justify-content: center;
+	position: relative;
+}
+
+.payment-section-overlay {
+	position: absolute;
+	background-color: rgba(10 10 10 / 25%);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.payment-section-overlay-notice {
+	@include common.fonts-define-font($family: var(--font-comfortaa));
+
+	border: {
+		radius: 15px;
+		width: 0.25px;
+		style: solid;
+		color: common.$colors-slate-gray;
+	}
+
+	margin-top: 20px;
+	padding: 30px;
+	background-color: common.$colors-white;
+	text-align: center;
+}
+
+.invoice-notice {
+	@include common.fonts-define-font($family: var(--font-comfortaa));
+
+	border: {
+		radius: 15px;
+		width: 0.25px;
+		style: solid;
+		color: common.$colors-slate-gray;
+	}
+
+	margin: {
+		top: 20px;
+		bottom: 20px;
+		left: auto;
+		right: auto;
+	}
+
+	padding: 15px;
+	background-color: common.$colors-white;
+	text-align: center;
+	max-width: 500px;
+	display: block;
+}

@@ -1,0 +1,26 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'public/styles/foundation/common';
+@use 'public/styles/page/lib/form';
+
+/* ----------------------- GENERAL STYLES ----------------------------- */
+
+.terms-and-conditions {
+	@include common.fonts-define-font();
+
+	margin: {
+		left: auto;
+		right: auto;
+		top: 25px;
+		bottom: 100px;
+	}
+
+	width: 90%;
+
+	& > p {
+		margin: {
+			top: 10px;
+			bottom: 10px;
+		}
+	}
+}

@@ -1,0 +1,105 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'public/styles/foundation/common';
+@use 'public/styles/page/lib/form';
+@use 'public/styles/page/lib/base';
+
+/* ----------------------- STYLES ----------------------------- */
+
+.page-container {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+}
+
+.logo-header-container {
+	margin: {
+		top: 50px;
+		bottom: 25px;
+	}
+
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	background-color: common.$colors-logo-blue;
+}
+
+.logo-header {
+	width: 180px;
+	height: 135px;
+}
+
+.c-suite-header {
+	@extend %page-header;
+}
+
+.login-box {
+	margin: {
+		left: auto;
+		right: auto;
+	}
+
+	border: {
+		width: 0;
+		radius: 20px;
+		style: solid;
+	}
+
+	background-color: common.$colors-white;
+	box-shadow: 3px 3px 10px common.$colors-low-black;
+}
+
+.login-box-body {
+	padding: {
+		top: 15px;
+		bottom: 15px;
+		left: 30px;
+		right: 30px;
+	}
+}
+
+.remember-me {
+	margin: {
+		top: 10px;
+		bottom: 10px;
+	}
+
+	text-align: left;
+}
+
+
+.login-box-label {
+	@extend %label;
+
+	display: block;
+}
+
+.login-input-grouping {
+	@extend %input-grouping;
+}
+
+.login-input-grouping-icon {
+	@extend %input-grouping-icon;
+}
+
+.login-input-field {
+	@extend %large-input-control;
+}
+
+.login-checkbox {
+	@extend %input-checkbox;
+}
+
+.secondary-label {
+	@extend %secondary-label;
+}
+
+.button-primary {
+	@include form.banner-button();
+
+	border: {
+		bottom-left-radius: 20px;
+		bottom-right-radius: 20px;
+	}
+}

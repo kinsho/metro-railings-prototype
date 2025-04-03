@@ -1,0 +1,132 @@
+/* ----------------------- IMPORTS ----------------------------- */
+
+@use 'public/styles/foundation/common';
+@use 'public/styles/page/lib/base';
+
+/* ----------------------- STYLES ----------------------------- */
+
+.page-container {
+	@include common.fonts-define-font($family: var(--font-avenir-light), $size: common.$fonts-subsection);
+
+	padding: {
+		bottom: 90px;
+	}
+
+	background-color: common.$colors-white;
+}
+
+.product-banner {
+	position: relative;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 25px;
+
+	@include common.responsive-desktop-only() {
+		height: 50vh;
+	}
+
+	@include common.responsive-portrait-mobile-only() {
+		height: 40vh;
+	}
+
+	@include common.responsive-landscape-mobile-only() {
+		height: 40vh;
+	}
+}
+
+.product-banner-image {
+	object-fit: cover;
+	opacity: 0.65;
+}
+
+.product-banner-name {
+	@include common.fonts-define-font($size: common.$fonts-subheader) {
+		letter-spacing: 5px;
+		color: common.$colors-white;
+		text-transform: uppercase;
+		text-shadow: 2px 2px 1px black;
+	}
+
+	padding: {
+		left: 20px;
+		right: 20px;
+		top: 5px;
+		bottom: 5px;
+	}
+
+	z-index: 1;
+	text-align: center;
+	width: 100%;
+	background-image: linear-gradient(to right, rgba(0 0 0 / 0%), rgba(0 0 0 / 65%), rgba(0 0 0 / 0%));
+}
+
+/* TODO - Figure out how to make product blocks fade onto the page once the user scrolls down to the point where it should be visible */
+
+.product-block {
+	margin: {
+		top: 20px;
+		bottom: 20px;
+	}
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	@include common.responsive-phone-only() {
+		flex-direction: column;
+	}
+}
+
+.product-block-image-container {
+	position: relative;
+	flex: 1;
+	min-height: 400px;
+
+	@include common.responsive-phone-only() {
+		width: 90%;
+	}
+}
+
+.product-block-image {
+	object-fit: cover;
+}
+
+.product-block-text {
+	margin: 15px;
+	flex: 1;
+	text-align: center;
+	line-height: 1.65em;
+
+	&-align-left {
+		@extend .product-block-text;
+
+		@include common.responsive-tablet-up() {
+			text-align: left;
+		}
+	}
+
+	&-align-right {
+		@extend .product-block-text;
+
+		@include common.responsive-tablet-up() {
+			text-align: right;
+		}
+	}
+}
+
+.galleria-title {
+	@include common.fonts-define-font($family: var(--font-avenir-light), $size: common.$fonts-subheader) {
+		letter-spacing: 2px;
+		text-transform: uppercase;
+	};
+
+	margin: {
+		top: 35px;
+		bottom: 35px;
+	}
+
+	width: 100%;
+	text-align: center;
+}
