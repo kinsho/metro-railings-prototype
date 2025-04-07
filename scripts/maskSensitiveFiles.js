@@ -1,5 +1,8 @@
-import { getAllOrders, saveChangesToOrder, updateModHistory } from 'lib/http/ordersDAO.js';
 import { randomBytes } from 'crypto';
+
+// AI - is there any way here to import all packages directly from the root directory? AI!
+import { getAllOrders, saveChangesToOrder, updateModHistory } from 'lib/http/ordersDAO.js';
+
 
 /**
  * Generates a random string to use as masked data
@@ -75,24 +78,6 @@ function maskOrder(order) {
     maskedOrder.customer.nickname = maskedOrder.customer.nickname ? 
       `Nick ${generateRandomString(4)}` : undefined;
   }
-  
-  // Mask payment information if it exists
-  if (maskedOrder.payments) {
-    // Mask customer ID but preserve structure
-    if (maskedOrder.payments.customer && maskedOrder.payments.customer.id) {
-      maskedOrder.payments.customer.id = `cus_${generateRandomString(14)}`;
-    }
-    
-    // Mask card information
-    if (Array.isArray(maskedOrder.payments.cards)) {
-      maskedOrder.payments.cards = maskedOrder.payments.cards.map(card => ({
-        ...card,
-        id: card.id ? `card_${generateRandomString(14)}` : undefined,
-        last4: card.last4 ? String(Math.floor(Math.random() * 9000) + 1000).slice(-4) : undefined
-      }));
-    }
-  }
-  
   return maskedOrder;
 }
 
