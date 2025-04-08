@@ -15,9 +15,15 @@
 *.pem
 
 # local env files
+.env
 .env.development
 .env.production
 .env.local
 
 # vercel
 .vercel
+
+# aider
+.aider.chat.history.md
+.aider.input.history
+.aider.tags.cache.v4

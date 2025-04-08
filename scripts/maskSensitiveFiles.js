@@ -1,8 +1,6 @@
 import { randomBytes } from 'crypto';
 
-// AI - is there any way here to import all packages directly from the root directory? AI!
-import { getAllOrders, saveChangesToOrder, updateModHistory } from 'lib/http/ordersDAO.js';
-
+import { getAllOrders, getOrderById, saveChangesToOrder, updateModHistory } from 'lib/http/ordersDAO';
 
 /**
  * Generates a random string to use as masked data
@@ -44,10 +42,10 @@ function maskPhone(phone) {
  * @param {Object} order - The order to mask
  * @returns {Object} The masked order
  */
-function maskOrder(order) {
-  // Create a deep copy to avoid modifying the original directly
-  const maskedOrder = JSON.parse(JSON.stringify(order));
-  
+async function maskOrder(order) {
+  // Get a full copy of the order
+  const maskedOrder = await getOrderById(order._id);
+
   // Mask customer information
   if (maskedOrder.customer) {
     maskedOrder.customer.name = `Customer ${generateRandomString(4)}`;
@@ -98,7 +96,7 @@ async function maskAllOrders() {
       console.log(`Processing order ${order._id} (${i + 1}/${orders.length})`);
       
       // Mask the order
-      const maskedOrder = maskOrder(order);
+      const maskedOrder = await maskOrder(order);
       
       // Create modification history
       const modHistory = updateModHistory('Data masking for privacy');
