@@ -631,3 +631,69 @@
 		}
 	}
 }
+
+.crm-notification-bar {
+	@include common.animations-transition-settings($property: all, $duration: 0.5s);
+
+	padding: {
+		top: 5px;
+		bottom: 5px;
+		left: 10px;
+		right: 10px;
+	}
+
+	border-top: {
+		width: 4px;
+		style: solid;
+		color: common.$colors-black;
+	}
+
+	position: fixed;
+	left: 0;
+	top: 105vh;
+	width: 100%;
+	z-index: 1000;
+	opacity: 0.0;
+	background-color: common.$colors-cadet-blue;
+	box-sizing: border-box;
+}
+
+.crm-notification-bar-body {
+	@include common.fonts-define-font($family: var(--font-poppins)) {
+		color: common.$colors-white;
+		text-shadow: 1px 1px 2px common.$colors-low-black;
+	};
+
+	& > p {
+		margin: {
+			top: 5px;
+			bottom: 5px;
+		}
+	}
+}
+
+.crm-notification-bar-link {
+	@include common.fonts-define-font($family: var(--font-poppins)) {
+		color: common.$colors-smoke-white;
+	};
+}
+
+.crm-notification-bar-dismiss-row {
+	@include common.fonts-define-font($size: common.$fonts-secondary, $family: var(--font-poppins)) {
+		color: common.$colors-white;
+		text-shadow: 1px 1px 2px common.$colors-low-black;
+		text-decoration: underline;
+	};
+
+	margin-right: 10px;
+	text-align: right;
+	cursor: pointer;
+}
+
+.crm-notification-bar-pop-in {
+	opacity: 1.0;
+}
+
+.crm-notification-bar-pop-out {
+	opacity: 0.0;
+}

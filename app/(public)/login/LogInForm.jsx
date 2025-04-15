@@ -19,8 +19,8 @@ const LoginForm = () => {
 	const [showPasswordFlag, setShowPasswordFlag] = useState(false);
 	const [rememberMeFlag, setRememberMeFlag] = useState(false);
 	const [credentials, setCredentials] = useState({
-		username: '',
-		password: '',
+		username: 'guest_admin',
+		password: 'password',
 	});
 
 	const router = useRouter()
@@ -67,71 +67,83 @@ const LoginForm = () => {
 	};
 
 	return (
-		<div className={ styles.loginBox }>
-			<form>
-				<div className={ styles.loginBoxBody }>
+		<>
+			<div className={ styles.crmGuidance }>
+				<p>
+					Welcome to the Metro Railings CRM that I built! All the information currently shown in this CRM has been pulled from real-life customer data going back two years.
+					Any and all identifying information has been scrambled for the sake of privacy. Feel free to play around with the CRM to your heart&apos;s content.
+					If you ever want to make a payment to test out the payment system, use any of the <a href='https://docs.stripe.com/testing' target='_blank' rel='noreferrer'>test cards</a> mentioned here.
+					To log in to the CRM, use the credentials that has already been entered into the fields below.
+				</p>
+			</div>
 
-					<label className={ styles.loginBoxLabel }>User Name</label>
-					<div className={ styles.loginInputGrouping }>
+			<div className={ styles.loginBox }>
+				<form>
+					<div className={ styles.loginBoxBody }>
+
+						<label className={ styles.loginBoxLabel }>User Name</label>
+						<div className={ styles.loginInputGrouping }>
 						<span className={ styles.loginInputGroupingIcon }>
 							<FontAwesomeIcon icon={faUser} />
 						</span>
-						<input
-							type='text'
-							name='username'
-							className={ styles.loginInputField }
-							placeholder='Enter your user name or e-mail address...'
-							onChange={ handleCredentialUpdate }
-							autoComplete='username'
-						/>
-					</div>
+							<input
+								type='text'
+								name='username'
+								className={ styles.loginInputField }
+								placeholder='Enter your user name or e-mail address...'
+								onChange={ handleCredentialUpdate }
+								autoComplete='username'
+								defaultValue={ credentials.username }
+							/>
+						</div>
 
-					<label className={ styles.loginBoxLabel }>Password</label>
-					<div className={ styles.loginInputGrouping }>
+						<label className={ styles.loginBoxLabel }>Password</label>
+						<div className={ styles.loginInputGrouping }>
 						<span className={ styles.loginInputGroupingIcon }>
 							<FontAwesomeIcon icon={ faKey } />
 						</span>
-						<input
-							type={ showPasswordFlag ? 'text' : 'password' }
-							name='password'
-							className={ styles.loginInputField }
-							placeholder='Enter your password here...'
-							onChange={ handleCredentialUpdate }
-							autoComplete='current-password'
-						/>
-						<span className={ styles.loginInputGroupingIcon }>
-							<FontAwesomeIcon
-								icon={showPasswordFlag ? faEye : faEyeSlash}
-								onClick={() => { setShowPasswordFlag(!showPasswordFlag) }}
+							<input
+								type={ showPasswordFlag ? 'text' : 'password' }
+								name='password'
+								className={ styles.loginInputField }
+								placeholder='Enter your password here...'
+								onChange={ handleCredentialUpdate }
+								autoComplete='current-password'
+								defaultValue={ credentials.password }
 							/>
-						</span>
+							<span className={ styles.loginInputGroupingIcon } onClick={() => { setShowPasswordFlag(!showPasswordFlag) }}>
+								<FontAwesomeIcon icon={showPasswordFlag ? faEye : faEyeSlash} />
+							</span>
+						</div>
+
+						<div className={ styles.rememberMe }>
+							<input
+								type='checkbox'
+								id='rememberMe'
+								className={ styles.loginCheckbox }
+								checked={ rememberMeFlag }
+								readOnly
+							/>
+							<label
+								htmlFor='rememberMe'
+								className={ styles.secondaryLabel }
+								onClick={() => setRememberMeFlag(!rememberMeFlag) }
+							>
+								Remember Me
+							</label>
+						</div>
+
 					</div>
 
-					<div className={ styles.rememberMe }>
-						<input
-							type='checkbox'
-							id='rememberMe'
-							className={ styles.loginCheckbox }
-							checked={ rememberMeFlag }
-							readOnly
-						/>
-						<label
-							htmlFor='rememberMe'
-							className={ styles.secondaryLabel }
-							onClick={() => setRememberMeFlag(!rememberMeFlag) }
-						>
-							Remember Me
-						</label>
+					<div>
+						<button className={ styles.buttonPrimary } onClick={ handleSubmit } type='button'>Submit</button>
 					</div>
 
-				</div>
+				</form>
+			</div>
 
-				<div>
-					<button className={ styles.buttonPrimary } onClick={ handleSubmit } type='button'>Submit</button>
-				</div>
+		</>
 
-			</form>
-		</div>
 	);
 };
 

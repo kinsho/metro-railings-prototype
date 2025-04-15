@@ -9,6 +9,7 @@ import StatsSection from 'app/(public)/Stats';
 import GallerySection from 'app/(public)/Gallery';
 import ReviewsServer from 'app/(public)/ReviewsServer';
 import ReviewSkeleton from 'app/(public)/ReviewSkeleton';
+import CRMNotification from 'app/(public)/CRMNotification';
 import VideoComponent from 'components/public/VideoComponent';
 
 import { textToParagraphs } from 'lib/utils';
@@ -120,6 +121,8 @@ const HomeServer = async () => {
 				</div>
 			</div>
 
+			{ /* CRM Notification */ }
+			<CRMNotification />
 		</>
 	);
 };

@@ -34,6 +34,37 @@
 	@extend %page-header;
 }
 
+.crm-guidance {
+	@include common.fonts-define-font($size: common.$fonts-secondary) {
+		text-align: left;
+		line-height: common.$fonts-section;
+	};
+
+	margin: {
+		bottom: 20px;
+	}
+
+	padding: {
+		top: 10px;
+		bottom: 10px;
+		left: 15px;
+		right: 15px;
+	}
+
+	border-radius: 15px;
+	width: 90%;
+	background-color: common.$colors-white;
+	box-shadow: 1px 1px 4px common.$colors-low-black;
+	box-sizing: border-box;
+
+	& > p {
+		margin: {
+			top: 5px;
+			bottom: 5px;
+		}
+	}
+}
+
 .login-box {
 	margin: {
 		left: auto;

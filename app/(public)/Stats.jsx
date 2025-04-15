@@ -43,7 +43,6 @@ const StatsSection = () => {
 				observer.unobserve(observedNode);
 			}
 		};
-
 	}, [observerTarget]);
 
 	return (
