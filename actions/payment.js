@@ -22,7 +22,7 @@ import {
 	finalizeInvoice
 } from 'lib/http/invoicesDAO';
 
-import { sendFinalizedOrderEmail, sendInvoicePaidEmail } from 'lib/loopMailer';
+import { sendInvoicePaidEmail } from 'lib/loopMailer';
 
 export async function addCardAndPayByCard(data) {
 	const uploader = cookies().has('user') ? JSON.parse(cookies().get('user').value)?.username : 'CUSTOMER';
