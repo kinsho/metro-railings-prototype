@@ -2,7 +2,8 @@ The Next.JS version of Metro Railings
 
 When I was younger and in a more rebellious phase of my life, I launched a construction company and wrote the code base 
 for the public website and customer relationship management platform using nothing but vanilla Node.JS and 
-ECMAScript. At the time, I was proud to have built a fully-functional CRM free from the constraints of any opinionated frameworks...but over the years, maintaining such a 
+ECMAScript 6. At the time, I was proud to have built a fully-functional CRM free from the constraints of any 
+opinionated frameworks...but over the years, maintaining such a 
 code base proved quite cumbersome, especially as I was trying to outsource the coding of new features for the 
 CRM platform. 
 
